@@ -14,9 +14,6 @@ public class MyStack {
     public Vertice pop(){
         return array[top--];
     }
-    public Vertice peek(){
-        return array[top];
-    }
     public boolean isEmpty(){
         if (top ==-1){
             return true;

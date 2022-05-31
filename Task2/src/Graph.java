@@ -2,7 +2,6 @@ import java.util.*;
 
 class Graph {
     public int[] arr;
-    public boolean cycl = false;
     private LinkedList<Vertice> adjLists[];
 
     Graph(int verticesCount) {
@@ -17,8 +16,6 @@ class Graph {
     }
 
     public Vertice getFirst() { return adjLists[0].getFirst();}
-
-    //public int getNumberOfFirst() {return adjLists[0].getFirst().number;}
 
     public ArrayList<Vertice> incNodes(Vertice node) {
         ArrayList<Vertice> arr = new ArrayList<>();
