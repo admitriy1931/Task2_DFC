@@ -25,7 +25,7 @@ public class Main {
         }
 
         FileWriter writter = new FileWriter("result",false);
-        var cycle = HasCycle(graph);
+        var cycle = HasCycle(graph, verticesCount);
         if (cycle.size() != 0){
             writter.append("N" + "\n");
             for (int i = 0; i<cycle.size();i++){
@@ -38,14 +38,14 @@ public class Main {
         }
     }
 
-    public static ArrayList<Integer> HasCycle(Graph graph){
+    public static ArrayList<Integer> HasCycle(Graph graph, int verticesCount){
         var endList = new ArrayList<Integer>();
         var visited = new ArrayList<Integer>();
         var finished = new HashSet<Integer>();
         var stack = new MyStack(10);
         visited.add(graph.getFirst().numOfVertex);
         stack.push(graph.getFirst());
-        int arr[] = new int[6];
+        int arr[] = new int[verticesCount];
         arr[graph.getFirst().numOfVertex] = -1;
         while (stack.isEmpty() == false){
             var node = stack.pop();
