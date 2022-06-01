@@ -5,8 +5,9 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
-        BufferedReader reader = new BufferedReader(new FileReader("data"));
+        var data = args[0];
+        var result = args[1];
+        BufferedReader reader = new BufferedReader(new FileReader(data));
         String line;
         List<String> lines = new ArrayList();
         while ((line = reader.readLine()) != null) {
@@ -24,7 +25,7 @@ public class Main {
             }
         }
 
-        FileWriter writter = new FileWriter("result",false);
+        FileWriter writter = new FileWriter(result);
         var cycle = HasCycle(graph, verticesCount);
         if (cycle.size() != 0){
             writter.append("N" + "\n");
