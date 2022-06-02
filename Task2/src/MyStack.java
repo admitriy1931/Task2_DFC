@@ -4,7 +4,6 @@ public class MyStack {
     private Vertice[] array;
     public MyStack(int size){
         array = new Vertice[size];
-        this.size = size;
         top = -1;
     }
 

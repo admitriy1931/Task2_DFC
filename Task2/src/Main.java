@@ -14,7 +14,6 @@ public class Main {
             lines.add(line);
         }
         String [] linesAsArray = lines.toArray(new String[lines.size()]);
-
         var verticesCount = Integer.parseInt(linesAsArray[0]);
         Graph graph = new Graph(verticesCount);
         for (int i = 1; i < verticesCount + 1; i++){
@@ -24,38 +23,39 @@ public class Main {
                 graph.addEdge(i - 1, new Vertice(Integer.parseInt(a[j]) - 1,i - 1));
             }
         }
-
         FileWriter writter = new FileWriter(result);
         var cycle = HasCycle(graph, verticesCount);
         if (cycle.size() != 0){
             writter.append("N" + "\n");
             for (int i = 0; i<cycle.size();i++){
-                writter.append(cycle.get(i) + "\n");
+                writter.append(cycle.get(i) + 1 + "\n");
             }
-            writter.flush();
         }
         else{
             writter.append("A");
         }
+        writter.flush();
     }
 
     public static ArrayList<Integer> HasCycle(Graph graph, int verticesCount){
         var endList = new ArrayList<Integer>();
         var visited = new ArrayList<Integer>();
         var finished = new HashSet<Integer>();
-        var stack = new MyStack(10);
-        visited.add(graph.getFirst().numOfVertex);
+        var stack = new MyStack(100);
         stack.push(graph.getFirst());
         int arr[] = new int[verticesCount];
         arr[graph.getFirst().numOfVertex] = -1;
         while (stack.isEmpty() == false){
             var node = stack.pop();
+            visited.add(node.numOfVertex);
             for (Vertice e: graph.incNodes(node)) {
-                if(visited.contains(e.numOfVertex) == false && finished.contains(e.numOfVertex) == false){
+                if(visited.contains(e.numOfVertex) == false){
                     arr[e.numOfVertex] = node.numOfVertex;
                     stack.push(e);
                 }
-                else if(visited.contains(e.numOfVertex) && e.numOfVertex != arr[node.numOfVertex]){
+                 //&& finished.contains(e.numOfVertex) == false
+                //e.numOfVertex != arr[node.numOfVertex]
+                if(visited.contains(e.numOfVertex) && e.numOfVertex != arr[node.numOfVertex]){
                     endList.add(e.numOfVertex);
                     for (int v = node.numOfVertex; v!= e.numOfVertex; v = arr[v]){
                         endList.add(v);

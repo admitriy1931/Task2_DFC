@@ -1,12 +1,12 @@
 import java.util.*;
 
 class Graph {
-    public int[] arr;
+    //public int[] arr;
     private LinkedList<Vertice> adjLists[];
 
     Graph(int verticesCount) {
         adjLists = new LinkedList[verticesCount];
-        arr = new int[verticesCount];
+        //arr = new int[verticesCount];
         for (int i = 0; i < verticesCount; i++)
             adjLists[i] = new LinkedList();
     }
